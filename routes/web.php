@@ -5,6 +5,7 @@ use App\Http\Controllers\EmailVerification;
 use App\Http\Controllers\EmailVerificationController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\User\TaskController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +24,10 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/email/verify/{id}', [EmailVerificationController::class, 'verify'])->name('verification.verify');
-
 Route::get('/forgot-password', [ForgotPasswordController::class, 'forgotPassword'])->name('forgot.password');
+
+Route::get('/task/{task_id}/approval/{user_id}/accept', [TaskController::class, 'acceptTask'])->name('accept.task');
+Route::get('/task/{task_id}/approval/{user_id}/decline', [TaskController::class, 'declineTask'])->name('decline.task');
+
 
 Route::view('/sucess', 'success')->name('sucess');

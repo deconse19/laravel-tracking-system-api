@@ -13,11 +13,13 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
+            $table->integer('task_assigner_id');
             $table->string('task_name');
             $table->string('task_description')->nullable();
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
-    }
+    }   
 
     /**
      * Reverse the migrations.

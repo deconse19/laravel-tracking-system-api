@@ -10,8 +10,10 @@ class Task extends Model
     use HasFactory;
 
     protected $fillable = [
+        'task_assigner_id',
         'task_name',
-        'task_description'
+        'task_description',
+        'status'
         
     ];
 
@@ -19,4 +21,10 @@ class Task extends Model
 
         return $this->belongsToMany(User::class);
     }
+
+//    public function assigner(){
+
+//     return $this->belongsToMany(User::class);
+//    }
+
 }

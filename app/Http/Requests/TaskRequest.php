@@ -22,10 +22,11 @@ class TaskRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'task_id' => 'nullable|numeric',
-            'department_id' => 'required|numeric',
-            'user_id' => 'required|numeric',
-            'task_name' => 'required|string|min:8',
+            'task_assigner_id' => 'required|numeric|exists:users,id',
+            'task_id' => 'nullable|numeric|exists:tasks,id',
+            'department_id' => 'required|numeric|exists:departments,id',
+            'user_id' => 'required|numeric|exists:users,id',
+            'task_name' => 'required|string',
             'task_description' => 'nullable'
 
         ];

@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class VerificationMail extends Mailable
+class ApprovalTaskMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -17,10 +17,11 @@ class VerificationMail extends Mailable
      * Create a new message instance.
      */
     public $user;
-
-    public function __construct($user)
+    public $task;
+    public function __construct($user, $task)
     {
         $this->user = $user;
+        $this->task = $task;
     }
 
     /**
@@ -29,17 +30,17 @@ class VerificationMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Email Verification',
+            subject: 'Approval Task Mail',
         );
     }
-    
+
     /**
      * Get the message content definition.
      */
     public function content(): Content
     {
         return new Content(
-            markdown: 'email.verification',
+            markdown: 'email.taskapproval',
         );
     }
 

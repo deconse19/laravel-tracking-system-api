@@ -24,6 +24,7 @@ class User extends Authenticatable
         'gender',
         'birthdate',
         'address',
+        'role',
         'department_id',
         'position_id',
         'company_id',
@@ -73,6 +74,10 @@ class User extends Authenticatable
 
     public function tasks(){
 
-        return $this->belongsToMany(Task::class)->withTimestamps();
+        return $this->belongsToMany(Task::class)->withPivot('started_at', 'submitted_at', 'verified_at')->withTimestamps();
     }
+
+ 
 }
+
+

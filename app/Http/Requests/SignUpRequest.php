@@ -20,6 +20,7 @@ class SignUpRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
+    
     public function rules(): array
     {
         return [
@@ -29,11 +30,12 @@ class SignUpRequest extends FormRequest
             'gender' => 'required|in:Male,Female,Other',
             'birthdate' => 'required|date',
             'address' => 'required|string|max:255',
+            'role' => 'required|in:Assigner,Assignee,assigner,assignee',
             'department_id' => 'required|exists:departments,id',
             'position_id' => 'required|exists:positions,id',
             'company_id' => 'required|string',
-            'email' => 'required|email:rfc,dns',
-            'password' => ['required','confirmed', Password::min(8)->numbers()->symbols()->mixedCase()->uncompromised()]
+            'email' => 'required|email:rfc,dns|unique:users,email',
+            'password' => ['required','confirmed', Password::min(8)->numbers()->symbols()->mixedCase()]
         ];
     }
 

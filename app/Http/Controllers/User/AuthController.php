@@ -36,15 +36,21 @@ class AuthController extends Controller
                 return response()->json(['Verify Email First'], 422);
             }
 
-            $success['token'] = $user->createToken('Token')->accessToken;
+            if (!Hash::check($request->password, $user->password)) {
+                return $this->sendError('Wrong password.', ['error' => 'Wrong password']);
+            }
+
+            $success = $user->createToken('Token')->accessToken;
 
             return response()->json([
-                'message' => 'Login Successfully',
-                $success
+                'message' => 'Successfully login',
+                'token' => $success
             ], 200);
         } else {
 
-            return response()->json(['Unauthorized'], 401);
+            return response()->json([
+                'message' => 'User not authorized'
+            ], 401);
         }
     }
 
@@ -60,7 +66,7 @@ class AuthController extends Controller
             DB::commit();
 
             return response()->json([
-
+                'message' => 'Successfully registered',
                 'satus' => true
             ], 200);
         } catch (\Exception $e) {
@@ -82,20 +88,21 @@ class AuthController extends Controller
 
             $token = Str::random(60);
 
-           
+
             PasswordResetToken::create([
                 'email' => $user->email,
                 'token' => $token,
-                'created_at' => now() 
+                'created_at' => now()
             ]);
 
-            Mail::to($user->email)->send(new ForgotPasswordMail($user, $token));
 
             DB::commit();
 
+            Mail::to($user->email)->send(new ForgotPasswordMail($user, $token));
+
+
             return response()->json([
                 'token' => $token,
-                'satus' => true
             ], 200);
         } catch (\Exception $e) {
             DB::rollBack();

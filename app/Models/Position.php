@@ -18,4 +18,5 @@ class Position extends Model
 
         return $this->hasMany(User::class);
     }
+    
 }

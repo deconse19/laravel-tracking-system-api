@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rules\Password;
 
-class ResetPasswordRequest extends FormRequest
+class DepartmentListRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,9 +22,7 @@ class ResetPasswordRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'token' => 'required',
-            'email'=>'required|email:rfc,dns',
-            'password' => ['required','confirmed', Password::min(8)->numbers()->symbols()->mixedCase()]
+            'department_id' => 'required|exists:departments,id',
         ];
     }
 }
