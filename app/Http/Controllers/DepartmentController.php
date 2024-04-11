@@ -11,50 +11,18 @@ use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
 {
+
+    /**
+     * Returns a list of departments
+     *
+     * @return array
+     */
     public function index()
     {
         $department = Department::get()->all();
 
         return response()->json([
             'department' => $department
-        ]);
-    }
-
-
-
-    public function showAssignee(ShowUserRequest $request)
-    {
-        $assignee = User::where('department_id', $request->department_id)
-            ->where('role', 'assignee')->get();
-
-
-        if ($assignee->isEmpty()) {
-            return response()->json([
-                'message' => 'No user'
-            ]);
-        }
-
-
-        return response()->json([
-            'list' => $assignee
-        ]);
-    }
-
-    public function showAssigner(ShowUserRequest $request)
-    {
-        $assigner = User::where('department_id', $request->department_id)
-            ->where('role', 'assigner')->get();
-
-
-        if ($assigner->isEmpty()) {
-            return response()->json([
-                'message' => 'No user'
-            ]);
-        }
-
-
-        return response()->json([
-            'list' => $assigner
         ]);
     }
 }

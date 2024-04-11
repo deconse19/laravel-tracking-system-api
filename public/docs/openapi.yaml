@@ -1,0 +1,861 @@
+openapi: 3.0.3
+info:
+  title: Tracking-System
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+paths:
+  /api/signup:
+    post:
+      summary: 'Sign Up'
+      operationId: signUp
+      description: 'Sign up a new user'
+      parameters: []
+      responses: {  }
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: mzkxsbkleqgdmqbcn
+                last_name:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: dhhprxvwiiza
+                contact_number:
+                  type: string
+                  description: 'Must not be greater than 20 characters.'
+                  example: korvmxhjgul
+                gender:
+                  type: string
+                  description: ''
+                  example: Male
+                  enum:
+                    - Male
+                    - Female
+                birthdate:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2024-04-11T03:40:13'
+                address:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: cxvzejjflemaxlcfudh
+                department_id:
+                  type: number
+                  description: ''
+                  example: 2663589.8581859
+                position_id:
+                  type: number
+                  description: ''
+                  example: 51698.9615
+                company_id:
+                  type: string
+                  description: ''
+                  example: ipsam
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: zwilderman@example.net
+                password:
+                  type: string
+                  description: ''
+                  example: ex
+              required:
+                - first_name
+                - last_name
+                - contact_number
+                - gender
+                - birthdate
+                - address
+                - department_id
+                - position_id
+                - company_id
+                - email
+                - password
+      security: []
+  /api/login:
+    post:
+      summary: Login
+      operationId: login
+      description: 'Authenticate a user'
+      parameters: []
+      responses: {  }
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: whegmann@example.com
+                password:
+                  type: string
+                  description: ''
+                  example: consectetur
+              required:
+                - email
+                - password
+      security: []
+  /api/logout:
+    post:
+      summary: Logout
+      operationId: logout
+      description: 'Logs out the user (removes the access token)'
+      parameters: []
+      responses: {  }
+      tags:
+        - Authentication
+      security: []
+  /api/password/forgot:
+    post:
+      summary: 'Forgot Password'
+      operationId: forgotPassword
+      description: 'Generate a password reset token for the given email address.'
+      parameters: []
+      responses: {  }
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: nrunolfsdottir@example.org
+              required:
+                - email
+      security: []
+  /api/password/check:
+    post:
+      summary: 'Check Reset Token'
+      operationId: checkResetToken
+      description: 'Check if the given password reset token is valid.'
+      parameters: []
+      responses: {  }
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                  description: ''
+                  example: ipsam
+              required:
+                - token
+      security: []
+  /api/password/reset:
+    post:
+      summary: 'Reset Password'
+      operationId: resetPassword
+      description: "Reset the user's password using the given password reset token."
+      parameters: []
+      responses: {  }
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                  description: ''
+                  example: nihil
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: marco.vandervort@example.org
+                password:
+                  type: string
+                  description: ''
+                  example: sint
+              required:
+                - token
+                - email
+                - password
+      security: []
+  /api/departments:
+    get:
+      summary: 'Returns a list of departments'
+      operationId: returnsAListOfDepartments
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  department:
+                    -
+                      id: 1
+                      name: 'R&D'
+                      created_at: null
+                      updated_at: null
+                    -
+                      id: 2
+                      name: SRE
+                      created_at: null
+                      updated_at: null
+                    -
+                      id: 3
+                      name: 'SHARED SERVICES-OUTSOURCE'
+                      created_at: null
+                      updated_at: null
+                    -
+                      id: 4
+                      name: INFRA-OPS
+                      created_at: null
+                      updated_at: null
+                    -
+                      id: 5
+                      name: 'SHARED SERVICES'
+                      created_at: null
+                      updated_at: null
+                properties:
+                  department:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: 'R&D'
+                        created_at: null
+                        updated_at: null
+                      -
+                        id: 2
+                        name: SRE
+                        created_at: null
+                        updated_at: null
+                      -
+                        id: 3
+                        name: 'SHARED SERVICES-OUTSOURCE'
+                        created_at: null
+                        updated_at: null
+                      -
+                        id: 4
+                        name: INFRA-OPS
+                        created_at: null
+                        updated_at: null
+                      -
+                        id: 5
+                        name: 'SHARED SERVICES'
+                        created_at: null
+                        updated_at: null
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: 'R&D'
+                        created_at:
+                          type: string
+                          example: null
+                        updated_at:
+                          type: string
+                          example: null
+      tags:
+        - Endpoints
+      security: []
+  /api/positions:
+    get:
+      summary: 'Returns a list of all positions'
+      operationId: returnsAListOfAllPositions
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  position:
+                    -
+                      id: 1
+                      name: 'Software Eng'
+                      created_at: null
+                      updated_at: null
+                    -
+                      id: 2
+                      name: 'Software Dev'
+                      created_at: null
+                      updated_at: null
+                    -
+                      id: 3
+                      name: 'Project Management'
+                      created_at: null
+                      updated_at: null
+                    -
+                      id: 4
+                      name: 'Q E'
+                      created_at: null
+                      updated_at: null
+                    -
+                      id: 5
+                      name: Intern
+                      created_at: null
+                      updated_at: null
+                properties:
+                  position:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: 'Software Eng'
+                        created_at: null
+                        updated_at: null
+                      -
+                        id: 2
+                        name: 'Software Dev'
+                        created_at: null
+                        updated_at: null
+                      -
+                        id: 3
+                        name: 'Project Management'
+                        created_at: null
+                        updated_at: null
+                      -
+                        id: 4
+                        name: 'Q E'
+                        created_at: null
+                        updated_at: null
+                      -
+                        id: 5
+                        name: Intern
+                        created_at: null
+                        updated_at: null
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: 'Software Eng'
+                        created_at:
+                          type: string
+                          example: null
+                        updated_at:
+                          type: string
+                          example: null
+      tags:
+        - Endpoints
+      security: []
+  /api/user/assignee/tasks:
+    get:
+      summary: ''
+      operationId: getApiUserAssigneeTasks
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/user/assignee/task/start:
+    post:
+      summary: ''
+      operationId: postApiUserAssigneeTaskStart
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/user/assignee/task/submit:
+    post:
+      summary: ''
+      operationId: postApiUserAssigneeTaskSubmit
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                  description: ''
+                  example: null
+                task_id:
+                  type: string
+                  description: ''
+                  example: null
+                task_assigner_id:
+                  type: string
+                  description: ''
+                  example: null
+      security: []
+  /api/user/assigner/task/verify:
+    post:
+      summary: ''
+      operationId: postApiUserAssignerTaskVerify
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                task_id:
+                  type: string
+                  description: ''
+                  example: null
+                user_id:
+                  type: string
+                  description: ''
+                  example: null
+      security: []
+  /api/user/assigner/assigned-tasks:
+    get:
+      summary: ''
+      operationId: getApiUserAssignerAssignedTasks
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/user/assigner/add:
+    post:
+      summary: ''
+      operationId: postApiUserAssignerAdd
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                task_id:
+                  type: number
+                  description: ''
+                  example: 202646.685
+                department_id:
+                  type: number
+                  description: ''
+                  example: 5160906.226114
+                user_id:
+                  type: number
+                  description: ''
+                  example: 40.378269
+                task_name:
+                  type: string
+                  description: ''
+                  example: doloribus
+                task_description:
+                  type: string
+                  description: ''
+                  example: null
+              required:
+                - department_id
+                - user_id
+                - task_name
+      security: []
+  /api/user/assigner/update:
+    post:
+      summary: ''
+      operationId: postApiUserAssignerUpdate
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                task_id:
+                  type: number
+                  description: ''
+                  example: 60.023465166
+                department_id:
+                  type: number
+                  description: ''
+                  example: 4998322.801
+                user_id:
+                  type: number
+                  description: ''
+                  example: 741923227.61
+                task_name:
+                  type: string
+                  description: ''
+                  example: et
+                task_description:
+                  type: string
+                  description: ''
+                  example: null
+              required:
+                - department_id
+                - user_id
+                - task_name
+      security: []
+  /api/task:
+    get:
+      summary: ''
+      operationId: getApiTask
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/task/complete:
+    get:
+      summary: ''
+      operationId: getApiTaskComplete
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/department:
+    get:
+      summary: 'Returns a list of departments'
+      operationId: returnsAListOfDepartments
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/user/change-role:
+    post:
+      summary: 'Change Role'
+      operationId: changeRole
+      description: 'Update user role'
+      parameters: []
+      responses: {  }
+      tags:
+        - 'User Controller'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                  description: ''
+                  example: atque
+                role:
+                  type: string
+                  description: ''
+                  example: Assigner
+                  enum:
+                    - Assignee
+                    - Assigner
+              required:
+                - user_id
+                - role
+      security: []
+  /api/user/profile/update:
+    post:
+      summary: 'Update user profile'
+      operationId: updateUserProfile
+      description: "Update the authenticated user's profile information."
+      parameters: []
+      responses: {  }
+      tags:
+        - 'User Controller'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: aglrlnqbhndaxzx
+                last_name:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: m
+                contact_number:
+                  type: string
+                  description: 'Must not be greater than 20 characters.'
+                  example: uqimzufoysaofyqfo
+                gender:
+                  type: string
+                  description: ''
+                  example: Female
+                  enum:
+                    - Male
+                    - Female
+                    - Other
+                birthdate:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2024-04-11T03:40:13'
+                address:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: impppjuyytzltizrlkav
+                department_id:
+                  type: string
+                  description: ''
+                  example: possimus
+                position_id:
+                  type: string
+                  description: ''
+                  example: voluptatem
+                company_id:
+                  type: string
+                  description: ''
+                  example: voluptas
+              required:
+                - first_name
+                - last_name
+                - contact_number
+                - gender
+                - birthdate
+                - address
+                - department_id
+                - position_id
+                - company_id
+      security: []
+  /api/user/password/change:
+    post:
+      summary: 'Change Password'
+      operationId: changePassword
+      description: "Update the authenticated user's password."
+      parameters: []
+      responses: {  }
+      tags:
+        - 'User Controller'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: lavina.brekke@example.org
+                old_password:
+                  type: string
+                  description: ''
+                  example: et
+                new_password:
+                  type: string
+                  description: 'Must be at least 8 characters.'
+                  example: tolrdyostpvbzfkqbbqdnimogormhlqfd
+              required:
+                - email
+                - old_password
+                - new_password
+      security: []
+  /api/user/delete:
+    post:
+      summary: 'Deactivate User'
+      operationId: deactivateUser
+      description: 'Deactivate a user by id'
+      parameters: []
+      responses: {  }
+      tags:
+        - 'User Controller'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                  description: ''
+                  example: dolorem
+              required:
+                - user_id
+      security: []
+  /api/user/restore:
+    post:
+      summary: 'Restore a user'
+      operationId: restoreAUser
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'User Controller'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                  description: ''
+                  example: odio
+              required:
+                - user_id
+      security: []
+  /api/department/assignee:
+    post:
+      summary: 'Show Assignee'
+      operationId: showAssignee
+      description: 'Returns a list of users who have the "assignee" role in the specified department'
+      parameters: []
+      responses: {  }
+      tags:
+        - 'User Controller'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                department_id:
+                  type: string
+                  description: ''
+                  example: null
+      security: []
+  /api/department/assigner:
+    post:
+      summary: 'Show Assigner'
+      operationId: showAssigner
+      description: 'Returns a list of users who have the "assigner" role in the specified department'
+      parameters: []
+      responses: {  }
+      tags:
+        - 'User Controller'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                department_id:
+                  type: string
+                  description: ''
+                  example: null
+      security: []
+tags:
+  -
+    name: Authentication
+    description: "\nAPIs for authenticating users"
+  -
+    name: Endpoints
+    description: ''
+  -
+    name: 'User Controller'
+    description: "\nAPIs for users"

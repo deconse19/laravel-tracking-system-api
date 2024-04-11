@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class PositionController extends Controller
 {
+    /**
+     * Returns a list of all positions
+     *
+     * @return array
+     */
+
     public function index(Request $request)
     {
 

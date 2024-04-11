@@ -23,9 +23,22 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
 
 
+/**
+ * @group Authentication
+ *
+ * APIs for authenticating users
+ */
 
 class AuthController extends Controller
 {
+    /**
+     * Login
+     * 
+     * Authenticate a user
+     *
+     * @param LoginRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function login(LoginRequest $request)
     {
 
@@ -44,6 +57,11 @@ class AuthController extends Controller
 
             return response()->json([
                 'message' => 'Successfully login',
+                'data' => [
+                    $user->first_name,
+                    $user->last_name,
+
+                ],
                 'token' => $success
             ], 200);
         } else {
@@ -53,6 +71,15 @@ class AuthController extends Controller
             ], 401);
         }
     }
+
+    /**
+     * Sign Up
+     * 
+     * Sign up a new user
+     *
+     * @param SignUpRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     */
 
     public function signUp(SignUpRequest $request)
     {
@@ -67,7 +94,7 @@ class AuthController extends Controller
 
             return response()->json([
                 'message' => 'Successfully registered',
-                'satus' => true
+                'status' => true
             ], 200);
         } catch (\Exception $e) {
             DB::rollBack();
@@ -78,6 +105,16 @@ class AuthController extends Controller
             ], 422);
         }
     }
+
+
+    /**
+     * Forgot Password
+     *
+     * Generate a password reset token for the given email address.
+     *
+     * @param ForgotPasswordRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     */
 
     public function forgotPassword(ForgotPasswordRequest $request)
     {
@@ -114,6 +151,17 @@ class AuthController extends Controller
         }
     }
 
+    /**
+     * 
+     * Check Reset Token
+     * 
+     * Check if the given password reset token is valid.
+     *
+     * @param string $token
+     * @return \Illuminate\Http\JsonResponse
+     */
+
+
     public function checkResetToken(ResetTokenRequest $request)
     {
         $token = $request->input('token');
@@ -142,6 +190,15 @@ class AuthController extends Controller
         ]);
     }
 
+    /**
+     * Reset Password
+     *
+     * Reset the user's password using the given password reset token.
+     *
+     * @param ResetPasswordRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+
     public function resetPassword(ResetPasswordRequest $request)
     {
         $resetToken = $request->input('token');
@@ -169,7 +226,13 @@ class AuthController extends Controller
         ]);
     }
 
-
+    /**
+     * Logout
+     * 
+     * Logs out the user (removes the access token)
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
 
     public function logout()
     {

@@ -1,0 +1,379 @@
+name: Authentication
+description: |-
+
+  APIs for authenticating users
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/signup
+    metadata:
+      groupName: Authentication
+      groupDescription: |-
+
+        APIs for authenticating users
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Sign Up'
+      description: 'Sign up a new user'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      first_name:
+        name: first_name
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: mzkxsbkleqgdmqbcn
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      last_name:
+        name: last_name
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: dhhprxvwiiza
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      contact_number:
+        name: contact_number
+        description: 'Must not be greater than 20 characters.'
+        required: true
+        example: korvmxhjgul
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      gender:
+        name: gender
+        description: ''
+        required: true
+        example: Male
+        type: string
+        enumValues:
+          - Male
+          - Female
+        exampleWasSpecified: false
+        custom: []
+      birthdate:
+        name: birthdate
+        description: 'Must be a valid date.'
+        required: true
+        example: '2024-04-11T03:40:13'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      address:
+        name: address
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: cxvzejjflemaxlcfudh
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      department_id:
+        name: department_id
+        description: ''
+        required: true
+        example: 2663589.8581859
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      position_id:
+        name: position_id
+        description: ''
+        required: true
+        example: 51698.9615
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      company_id:
+        name: company_id
+        description: ''
+        required: true
+        example: ipsam
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: zwilderman@example.net
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      password:
+        name: password
+        description: ''
+        required: true
+        example: ex
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      first_name: mzkxsbkleqgdmqbcn
+      last_name: dhhprxvwiiza
+      contact_number: korvmxhjgul
+      gender: Male
+      birthdate: '2024-04-11T03:40:13'
+      address: cxvzejjflemaxlcfudh
+      department_id: 2663589.8581859
+      position_id: 51698.9615
+      company_id: ipsam
+      email: zwilderman@example.net
+      password: ex
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/login
+    metadata:
+      groupName: Authentication
+      groupDescription: |-
+
+        APIs for authenticating users
+      subgroup: ''
+      subgroupDescription: ''
+      title: Login
+      description: 'Authenticate a user'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: whegmann@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      password:
+        name: password
+        description: ''
+        required: true
+        example: consectetur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      email: whegmann@example.com
+      password: consectetur
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/logout
+    metadata:
+      groupName: Authentication
+      groupDescription: |-
+
+        APIs for authenticating users
+      subgroup: ''
+      subgroupDescription: ''
+      title: Logout
+      description: 'Logs out the user (removes the access token)'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/password/forgot
+    metadata:
+      groupName: Authentication
+      groupDescription: |-
+
+        APIs for authenticating users
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Forgot Password'
+      description: 'Generate a password reset token for the given email address.'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: nrunolfsdottir@example.org
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      email: nrunolfsdottir@example.org
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/password/check
+    metadata:
+      groupName: Authentication
+      groupDescription: |-
+
+        APIs for authenticating users
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Check Reset Token'
+      description: 'Check if the given password reset token is valid.'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      token:
+        name: token
+        description: ''
+        required: true
+        example: ipsam
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      token: ipsam
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/password/reset
+    metadata:
+      groupName: Authentication
+      groupDescription: |-
+
+        APIs for authenticating users
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Reset Password'
+      description: "Reset the user's password using the given password reset token."
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      token:
+        name: token
+        description: ''
+        required: true
+        example: nihil
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: marco.vandervort@example.org
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      password:
+        name: password
+        description: ''
+        required: true
+        example: sint
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      token: nihil
+      email: marco.vandervort@example.org
+      password: sint
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
