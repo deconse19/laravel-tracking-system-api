@@ -323,7 +323,7 @@ endpoints:
         name: task_id
         description: ''
         required: false
-        example: 202646.685
+        example: 38492.0
         type: number
         enumValues: []
         exampleWasSpecified: false
@@ -332,7 +332,7 @@ endpoints:
         name: department_id
         description: ''
         required: true
-        example: 5160906.226114
+        example: 3125919.5
         type: number
         enumValues: []
         exampleWasSpecified: false
@@ -341,7 +341,7 @@ endpoints:
         name: user_id
         description: ''
         required: true
-        example: 40.378269
+        example: 1292.006
         type: number
         enumValues: []
         exampleWasSpecified: false
@@ -365,9 +365,9 @@ endpoints:
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      task_id: 202646.685
-      department_id: 5160906.226114
-      user_id: 40.378269
+      task_id: 38492.0
+      department_id: 3125919.5
+      user_id: 1292.006
       task_name: doloribus
     fileParameters: []
     responses: []
@@ -402,7 +402,7 @@ endpoints:
         name: task_id
         description: ''
         required: false
-        example: 60.023465166
+        example: 3506.01452
         type: number
         enumValues: []
         exampleWasSpecified: false
@@ -411,7 +411,7 @@ endpoints:
         name: department_id
         description: ''
         required: true
-        example: 4998322.801
+        example: 12615.3
         type: number
         enumValues: []
         exampleWasSpecified: false
@@ -420,7 +420,7 @@ endpoints:
         name: user_id
         description: ''
         required: true
-        example: 741923227.61
+        example: 464.468115246
         type: number
         enumValues: []
         exampleWasSpecified: false
@@ -429,7 +429,7 @@ endpoints:
         name: task_name
         description: ''
         required: true
-        example: et
+        example: pariatur
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -444,10 +444,10 @@ endpoints:
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      task_id: 60.023465166
-      department_id: 4998322.801
-      user_id: 741923227.61
-      task_name: et
+      task_id: 3506.01452
+      department_id: 12615.3
+      user_id: 464.468115246
+      task_name: pariatur
     fileParameters: []
     responses: []
     responseFields: []
@@ -499,6 +499,45 @@ endpoints:
     httpMethods:
       - GET
     uri: api/task/complete
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: Origin
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/task/task-counter
     metadata:
       groupName: Endpoints
       groupDescription: ''

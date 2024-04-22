@@ -1,15 +1,15 @@
 <x-mail::message>
-# Task 
+# Hey {{$user['first_name']}}
 
-Task {{$task['task_name']}} is assigned for you
+<strong>{{$task['task_name']}}</strong><br>
+{{$task['task_description']}}
 
+
+
+Thanks, <br>
+{{$assignerFullName}}
 
 <x-mail::button :url="route('verification.verify', ['id' => $user['id']])">
-View
+Start Task
 </x-mail::button>
-
-
-
-Thanks,<br>
-{{ config('app.name') }}
 </x-mail::message>

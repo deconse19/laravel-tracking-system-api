@@ -17,9 +17,11 @@ class TaskVerificationMail extends Mailable
      * Create a new message instance.
      */
     public $user;
-    public function __construct($user)
+    public $task;
+    public function __construct($user,$task)
     {
         $this->user = $user;
+        $this->task = $task;
     }
 
     /**

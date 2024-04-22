@@ -34,7 +34,7 @@ class UserController extends Controller
     public function showAssignee(ShowUserRequest $request)
     {
         $assignee = User::where('department_id', $request->department_id)
-            ->where('role', 'assignee')->get();
+            ->where('role', 'Assignee')->get();
 
 
         if ($assignee->isEmpty()) {
@@ -80,36 +80,7 @@ class UserController extends Controller
         ]);
     }
 
-    /**
-     * Change Role
-     * 
-     * 
-     * Update user role
-     *
-     * @param int $user_id
-     * @param string $role
-     * @return \Illuminate\Http\JsonResponse
-     */
 
-    public function changeRole(ChangeRoleRequest $request)
-    {
-
-        $user = User::find($request->input('user_id'));
-
-        $user->update(['role' => $request->input('role')]);
-
-        return response()->json([
-
-            'message' => 'Role Updated',
-            'data' => [
-
-                'id' => $user->id,
-                'first_name' => $user->first_name,
-                'last_name' => $user->last_name,
-                'role' =>  $user->role,
-            ]
-        ]);
-    }
     /**
      * 
      * Update user profile
@@ -182,34 +153,4 @@ class UserController extends Controller
      * @param int $user_id
      * @return \Illuminate\Http\JsonResponse
      */
-
-    public function deleteUser(DeleteUserRequest $request)
-    {
-
-        $data = User::find($request->user_id);
-        $data->delete();
-
-        return response()->json([
-            'message' => 'user deleted',
-
-        ]);
-    }
-    /**
-     * Restore a user
-     *
-     * @param RestoreUserRequest $request
-     * @return JsonResponse
-     */
-
-    public function restoreUser(RestoreUserRequest $request)
-    {
-
-        $data = User::withTrashed()->find($request->user_id);
-        $data->restore();
-
-        return response()->json([
-            'message' => 'user restored',
-
-        ]);
-    }
 }

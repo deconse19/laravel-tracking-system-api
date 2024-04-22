@@ -1,7 +1,7 @@
 <x-mail::message>
 # Introduction
 
-The body of your message.
+The task {{$task['task_name']}} is submitted please verify.
 
 
 

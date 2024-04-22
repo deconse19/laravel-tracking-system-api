@@ -15,29 +15,59 @@ use Illuminate\Support\Facades\Mail;
 
 class AssigneeController extends Controller
 {
+    public function countStatus()
+    {
+        $currentUser = Auth::user();
 
-    
+        $userTasks = $currentUser->tasks()->get();
+
+        // dd($userTasks);
+        $pendingCount = $userTasks->where('status', 'pending')->count();
+        $inProgressCount = $userTasks->where('status', 'in progress')->count();
+        $completedCount = $userTasks->where('status', 'verified')->count();
+
+        return response()->json([
+            'pending' => $pendingCount,
+            'in_progress' => $inProgressCount,
+            'completed' => $completedCount,
+            'id' => $currentUser->id
+        ]);
+    }
+
     public function showAssigneeTasks()
     {
-        $user = Auth::user();
+        $currentUser = Auth::user();
 
-        $tasks = $user->tasks;
+        if ($currentUser->role !== 'Assignee') {
+
+            return response()->json([
+                'message' => 'You are not an assignee'
+            ], 401);
+        }
+        $tasks = $currentUser->tasks;
+
+        if ($tasks->isEmpty()) {
+            return response()->json([
+                'message' => 'You have no tasks yet'
+            ], 401);
+        }
+
         $tasksData = [];
 
         foreach ($tasks as $task) {
 
             $taskAssigner =  User::find($task->task_assigner_id);
 
-
             if ($taskAssigner) {
                 $tasksData[] = [
                     'id' => $task->id,
                     'task_name' => $task->task_name,
                     'task_description' => $task->task_description,
-                    'status' => $task->status,
                     'task_assigner_id' => $task->task_assigner_id,
                     'task_assigner_first_name' => $taskAssigner->first_name,
                     'task_assigner_last_name' => $taskAssigner->last_name,
+                    'created_at' => $task->created_at->toDateTimeString(),
+                    'status' => $task->status,
 
                 ];
             }
@@ -50,12 +80,21 @@ class AssigneeController extends Controller
 
     public function startTask(StartTaskRequest $request)
     {
-        $user = User::find($request->user_id);
+
+        Auth::user();
+
+        // if ($currentUser->role !== 'Assignee') {
+
+        //     return response()->json([
+        //         'message' => 'You are not an assignee'
+        //     ], 401);
+        // }
         $task = Task::find($request->task_id);
+        // $pivotData = $currentUser->tasks()->where('task_id', $request->task_id)->first()->pivot;
 
-        $pivotData = $user->tasks()->where('task_id', $request->task_id)->first()->pivot;
+        $pivotTimeData = $task->users()->first()->pivot;
 
-        if ($pivotData->started_at !== null) {
+        if ($pivotTimeData->started_at !== null) {
 
             return response()->json([
                 'message' => 'This task is already been taken',
@@ -66,8 +105,8 @@ class AssigneeController extends Controller
             'status' => 'in progress',
         ]);
 
-        $user->tasks()->updateExistingPivot($task, [
-            'started_at' => now(),
+        $task->users()->updateExistingPivot($task->users()->first(), [
+            'started_at' => now()
         ]);
 
         return response()->json([
@@ -75,29 +114,24 @@ class AssigneeController extends Controller
             'success' => true,
         ]);
     }
-
-
     public function submitTask(SubmitTaskRequest $request)
     {
-        $user = User::find($request->user_id);
+        $currentUser = Auth::user();
         $task = Task::find($request->task_id);
-        
+
         $taskAssigner = User::find($task->task_assigner_id);
 
+        // dd($task->users()->first()->pivot);
+        $task->users()->updateExistingPivot($task->users()->first(), [
+            'submitted_at' => now()
+        ]);
 
-        $pivotData = $user->tasks()->where('task_id', $request->task_id)->first()->pivot;
+        $pivotTimeData = $task->users()->first()->pivot;
 
-        if ($pivotData->started_at === null) {
+        if ($pivotTimeData->started_at === null) {
             return response()->json([
                 'success' => false,
                 'message' => 'This task is not started yet.',
-            ], 400);
-        }
-
-        if ($pivotData->submitted_at !== null) {
-
-            return response()->json([
-                'message' => 'This task is already been submitted',
             ], 400);
         }
 
@@ -110,21 +144,18 @@ class AssigneeController extends Controller
             ], 400);
         }
 
-        $user->tasks()->updateExistingPivot($task, [
+        $currentUser->tasks()->updateExistingPivot($task, [
             'submitted_at' => now(),
         ]);
 
         $task->update([
             'status' => 'submitted'
         ]);
-        Mail::to($taskAssigner->email)->send(new TaskVerificationMail($user));
+        Mail::to($taskAssigner->email)->send(new TaskVerificationMail($taskAssigner,$task));
 
         return response()->json([
             'message' => 'Task submitted',
             'success' => true,
         ]);
     }
-
-
-   
 }

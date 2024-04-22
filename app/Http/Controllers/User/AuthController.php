@@ -60,6 +60,7 @@ class AuthController extends Controller
                 'data' => [
                     $user->first_name,
                     $user->last_name,
+                    $user->role
 
                 ],
                 'token' => $success

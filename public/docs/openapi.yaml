@@ -26,15 +26,15 @@ paths:
                 first_name:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: mzkxsbkleqgdmqbcn
+                  example: uvicmluwvewnv
                 last_name:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: dhhprxvwiiza
+                  example: hcoyuopdgerjrqgepldxs
                 contact_number:
                   type: string
                   description: 'Must not be greater than 20 characters.'
-                  example: korvmxhjgul
+                  example: qfxo
                 gender:
                   type: string
                   description: ''
@@ -45,31 +45,31 @@ paths:
                 birthdate:
                   type: string
                   description: 'Must be a valid date.'
-                  example: '2024-04-11T03:40:13'
+                  example: '2024-04-11T08:14:55'
                 address:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: cxvzejjflemaxlcfudh
+                  example: sd
                 department_id:
                   type: number
                   description: ''
-                  example: 2663589.8581859
+                  example: 19706732.875241
                 position_id:
                   type: number
                   description: ''
-                  example: 51698.9615
+                  example: 46630.1
                 company_id:
                   type: string
                   description: ''
-                  example: ipsam
+                  example: accusamus
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: zwilderman@example.net
+                  example: tony77@example.net
                 password:
                   type: string
                   description: ''
-                  example: ex
+                  example: magni
               required:
                 - first_name
                 - last_name
@@ -102,11 +102,11 @@ paths:
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: whegmann@example.com
+                  example: monica89@example.net
                 password:
                   type: string
                   description: ''
-                  example: consectetur
+                  example: consequatur
               required:
                 - email
                 - password
@@ -140,7 +140,7 @@ paths:
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: nrunolfsdottir@example.org
+                  example: schaden.isaias@example.com
               required:
                 - email
       security: []
@@ -163,7 +163,7 @@ paths:
                 token:
                   type: string
                   description: ''
-                  example: ipsam
+                  example: earum
               required:
                 - token
       security: []
@@ -186,15 +186,15 @@ paths:
                 token:
                   type: string
                   description: ''
-                  example: nihil
+                  example: sunt
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: marco.vandervort@example.org
+                  example: adrien.kihn@example.org
                 password:
                   type: string
                   description: ''
-                  example: sint
+                  example: velit
               required:
                 - token
                 - email
@@ -501,15 +501,15 @@ paths:
                 task_id:
                   type: number
                   description: ''
-                  example: 202646.685
+                  example: 38492.0
                 department_id:
                   type: number
                   description: ''
-                  example: 5160906.226114
+                  example: 3125919.5
                 user_id:
                   type: number
                   description: ''
-                  example: 40.378269
+                  example: 1292.006
                 task_name:
                   type: string
                   description: ''
@@ -542,19 +542,19 @@ paths:
                 task_id:
                   type: number
                   description: ''
-                  example: 60.023465166
+                  example: 3506.01452
                 department_id:
                   type: number
                   description: ''
-                  example: 4998322.801
+                  example: 12615.3
                 user_id:
                   type: number
                   description: ''
-                  example: 741923227.61
+                  example: 464.468115246
                 task_name:
                   type: string
                   description: ''
-                  example: et
+                  example: pariatur
                 task_description:
                   type: string
                   description: ''
@@ -590,6 +590,28 @@ paths:
     get:
       summary: ''
       operationId: getApiTaskComplete
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/task/task-counter:
+    get:
+      summary: ''
+      operationId: getApiTaskTaskCounter
       description: ''
       parameters: []
       responses:
@@ -649,7 +671,7 @@ paths:
                 user_id:
                   type: string
                   description: ''
-                  example: atque
+                  example: quia
                 role:
                   type: string
                   description: ''
@@ -680,15 +702,15 @@ paths:
                 first_name:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: aglrlnqbhndaxzx
+                  example: bpxxfgaaillrnvk
                 last_name:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: m
+                  example: nvyobjrhadmmf
                 contact_number:
                   type: string
                   description: 'Must not be greater than 20 characters.'
-                  example: uqimzufoysaofyqfo
+                  example: yneahmnksspsovmfmm
                 gender:
                   type: string
                   description: ''
@@ -700,23 +722,23 @@ paths:
                 birthdate:
                   type: string
                   description: 'Must be a valid date.'
-                  example: '2024-04-11T03:40:13'
+                  example: '2024-04-11T08:14:55'
                 address:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: impppjuyytzltizrlkav
+                  example: ippoiqocbp
                 department_id:
                   type: string
                   description: ''
-                  example: possimus
+                  example: et
                 position_id:
                   type: string
                   description: ''
-                  example: voluptatem
+                  example: veritatis
                 company_id:
                   type: string
                   description: ''
-                  example: voluptas
+                  example: quidem
               required:
                 - first_name
                 - last_name
@@ -747,15 +769,15 @@ paths:
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: lavina.brekke@example.org
+                  example: drake16@example.net
                 old_password:
                   type: string
                   description: ''
-                  example: et
+                  example: sit
                 new_password:
                   type: string
                   description: 'Must be at least 8 characters.'
-                  example: tolrdyostpvbzfkqbbqdnimogormhlqfd
+                  example: hzculgxapbehcbpvqqmjgerxeicpodibfbpcydevgvzvmqyqgdzrmjlekvioyasmgrektxmwom
               required:
                 - email
                 - old_password
@@ -780,7 +802,7 @@ paths:
                 user_id:
                   type: string
                   description: ''
-                  example: dolorem
+                  example: qui
               required:
                 - user_id
       security: []
@@ -803,7 +825,7 @@ paths:
                 user_id:
                   type: string
                   description: ''
-                  example: odio
+                  example: nihil
               required:
                 - user_id
       security: []

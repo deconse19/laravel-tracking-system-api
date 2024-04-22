@@ -18,10 +18,12 @@ class ApprovalTaskMail extends Mailable
      */
     public $user;
     public $task;
-    public function __construct($user, $task)
+    public $assignerFullName;
+    public function __construct($user, $task, $assignerFullName)
     {
         $this->user = $user;
         $this->task = $task;
+        $this->assignerFullName = $assignerFullName;
     }
 
     /**

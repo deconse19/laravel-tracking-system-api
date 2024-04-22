@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Tracking-System",
-        "_postman_id": "3c73d5c6-06d7-4331-9c4b-f259c1bca007",
+        "_postman_id": "81eceafb-79bb-4e1f-b529-440a720bddda",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -41,7 +41,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"mzkxsbkleqgdmqbcn\",\"last_name\":\"dhhprxvwiiza\",\"contact_number\":\"korvmxhjgul\",\"gender\":\"Male\",\"birthdate\":\"2024-04-11T03:40:13\",\"address\":\"cxvzejjflemaxlcfudh\",\"department_id\":2663589.85818586,\"position_id\":51698.9615,\"company_id\":\"ipsam\",\"email\":\"zwilderman@example.net\",\"password\":\"ex\"}"
+                            "raw": "{\"first_name\":\"uvicmluwvewnv\",\"last_name\":\"hcoyuopdgerjrqgepldxs\",\"contact_number\":\"qfxo\",\"gender\":\"Male\",\"birthdate\":\"2024-04-11T08:14:55\",\"address\":\"sd\",\"department_id\":19706732.875241484,\"position_id\":46630.1,\"company_id\":\"accusamus\",\"email\":\"tony77@example.net\",\"password\":\"magni\"}"
                         },
                         "description": "Sign up a new user",
                         "auth": {
@@ -72,7 +72,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"whegmann@example.com\",\"password\":\"consectetur\"}"
+                            "raw": "{\"email\":\"monica89@example.net\",\"password\":\"consequatur\"}"
                         },
                         "description": "Authenticate a user",
                         "auth": {
@@ -131,7 +131,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"nrunolfsdottir@example.org\"}"
+                            "raw": "{\"email\":\"schaden.isaias@example.com\"}"
                         },
                         "description": "Generate a password reset token for the given email address.",
                         "auth": {
@@ -162,7 +162,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"token\":\"ipsam\"}"
+                            "raw": "{\"token\":\"earum\"}"
                         },
                         "description": "Check if the given password reset token is valid.",
                         "auth": {
@@ -193,7 +193,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"token\":\"nihil\",\"email\":\"marco.vandervort@example.org\",\"password\":\"sint\"}"
+                            "raw": "{\"token\":\"sunt\",\"email\":\"adrien.kihn@example.org\",\"password\":\"velit\"}"
                         },
                         "description": "Reset the user's password using the given password reset token.",
                         "auth": {
@@ -528,7 +528,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"task_id\":202646.685,\"department_id\":5160906.226114,\"user_id\":40.378269,\"task_name\":\"doloribus\"}"
+                            "raw": "{\"task_id\":38492,\"department_id\":3125919.5,\"user_id\":1292.006,\"task_name\":\"doloribus\"}"
                         },
                         "description": "",
                         "auth": {
@@ -559,7 +559,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"task_id\":60.023465166,\"department_id\":4998322.801,\"user_id\":741923227.61,\"task_name\":\"et\"}"
+                            "raw": "{\"task_id\":3506.01452,\"department_id\":12615.3,\"user_id\":464.468115246,\"task_name\":\"pariatur\"}"
                         },
                         "description": "",
                         "auth": {
@@ -624,6 +624,54 @@
                             "path": "api\/task\/complete",
                             "query": [],
                             "raw": "{{baseUrl}}\/api\/task\/complete"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "vary",
+                                    "value": "Origin"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/task\/task-counter",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/task\/task-counter",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/task\/task-counter"
                         },
                         "method": "GET",
                         "header": [
@@ -740,7 +788,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"user_id\":\"atque\",\"role\":\"Assigner\"}"
+                            "raw": "{\"user_id\":\"quia\",\"role\":\"Assigner\"}"
                         },
                         "description": "Update user role",
                         "auth": {
@@ -771,7 +819,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"aglrlnqbhndaxzx\",\"last_name\":\"m\",\"contact_number\":\"uqimzufoysaofyqfo\",\"gender\":\"Female\",\"birthdate\":\"2024-04-11T03:40:13\",\"address\":\"impppjuyytzltizrlkav\",\"department_id\":\"possimus\",\"position_id\":\"voluptatem\",\"company_id\":\"voluptas\"}"
+                            "raw": "{\"first_name\":\"bpxxfgaaillrnvk\",\"last_name\":\"nvyobjrhadmmf\",\"contact_number\":\"yneahmnksspsovmfmm\",\"gender\":\"Female\",\"birthdate\":\"2024-04-11T08:14:55\",\"address\":\"ippoiqocbp\",\"department_id\":\"et\",\"position_id\":\"veritatis\",\"company_id\":\"quidem\"}"
                         },
                         "description": "Update the authenticated user's profile information.",
                         "auth": {
@@ -802,7 +850,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"lavina.brekke@example.org\",\"old_password\":\"et\",\"new_password\":\"tolrdyostpvbzfkqbbqdnimogormhlqfd\"}"
+                            "raw": "{\"email\":\"drake16@example.net\",\"old_password\":\"sit\",\"new_password\":\"hzculgxapbehcbpvqqmjgerxeicpodibfbpcydevgvzvmqyqgdzrmjlekvioyasmgrektxmwom\"}"
                         },
                         "description": "Update the authenticated user's password.",
                         "auth": {
@@ -833,7 +881,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"user_id\":\"dolorem\"}"
+                            "raw": "{\"user_id\":\"qui\"}"
                         },
                         "description": "Deactivate a user by id",
                         "auth": {
@@ -864,7 +912,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"user_id\":\"odio\"}"
+                            "raw": "{\"user_id\":\"nihil\"}"
                         },
                         "description": "",
                         "auth": {
