@@ -63,14 +63,14 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth:api'], function () {
 
 
 
-Route::group(['prefix' => 'task', 'middleware' => 'auth:api', 'throttle:60,1'], function () {
+Route::group(['prefix' => 'task', 'middleware' => 'auth:api', 'throttle:6,1'], function () {
     Route::get('/', [TaskController::class, 'index']);
     Route::get('/show-complete', [TaskController::class, 'showCompletedTask']);
     Route::get('task-counter', [TaskController::class, 'countStatus']);
 });
 
 
-Route::group(['prefix' => 'department', 'middleware' => 'auth:api', 'throttle:60,1'], function () {
+Route::group(['prefix' => 'department', 'middleware' => 'auth:api', 'throttle:6,1'], function () {
     Route::get('/', [DepartmentController::class, 'index']);
 
     Route::post('/assignee', [UserController::class, 'showAssignee']);

@@ -83,12 +83,6 @@ class AssigneeController extends Controller
 
         Auth::user();
 
-        // if ($currentUser->role !== 'Assignee') {
-
-        //     return response()->json([
-        //         'message' => 'You are not an assignee'
-        //     ], 401);
-        // }
         $task = Task::find($request->task_id);
         // $pivotData = $currentUser->tasks()->where('task_id', $request->task_id)->first()->pivot;
 
@@ -121,7 +115,6 @@ class AssigneeController extends Controller
 
         $taskAssigner = User::find($task->task_assigner_id);
 
-        // dd($task->users()->first()->pivot);
         $task->users()->updateExistingPivot($task->users()->first(), [
             'submitted_at' => now()
         ]);
@@ -134,8 +127,6 @@ class AssigneeController extends Controller
                 'message' => 'This task is not started yet.',
             ], 400);
         }
-
-
         if (!$taskAssigner || $taskAssigner->id !== $task->task_assigner_id) {
 
             return response()->json([
@@ -151,7 +142,7 @@ class AssigneeController extends Controller
         $task->update([
             'status' => 'submitted'
         ]);
-        Mail::to($taskAssigner->email)->send(new TaskVerificationMail($taskAssigner,$task));
+        Mail::to($taskAssigner->email)->send(new TaskVerificationMail($currentUser,$task));
 
         return response()->json([
             'message' => 'Task submitted',

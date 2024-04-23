@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Mail;
 
 class AssignerController extends Controller
 {
-
     public function countStatus()
     {
         Auth::user();
@@ -34,7 +33,6 @@ class AssignerController extends Controller
 
         ]);
     }
-
 
     public function specificTask()
     {

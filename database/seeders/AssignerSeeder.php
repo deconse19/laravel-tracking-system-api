@@ -13,6 +13,6 @@ class AssignerSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory()->count(3)->create(['role' => 'Assigner']);
+        User::factory()->count(1)->create(['role' => 'Assignee']);
     }
 }

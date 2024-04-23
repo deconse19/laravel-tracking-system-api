@@ -16,11 +16,11 @@ class TaskVerificationMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public $user;
+    public $currentUser;
     public $task;
-    public function __construct($user,$task)
+    public function __construct($currentUser,$task)
     {
-        $this->user = $user;
+        $this->currentUser = $currentUser;
         $this->task = $task;
     }
 
@@ -30,7 +30,7 @@ class TaskVerificationMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: $this->user->email,
+            from: $this->currentUser->email,
             subject: 'Task Verification Mail',
         );
     }
